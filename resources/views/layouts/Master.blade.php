@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>LUXE</title>
 
+    <title>LUXE</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/css/app.css">
 </head>
 
@@ -81,8 +81,8 @@
                         data-accordion="false">
 
                         <li class="nav-item">
-                            <router-link to="/dashboard" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <router-link to="/dashboard" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt text-light"></i>
                                 <p>
                                     Dashboard
                                 </p>
@@ -91,7 +91,7 @@
                         {{-- Management --}}
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-cogs"></i>
+                                <i class="nav-icon fas fa-cogs text-light"></i>
                                 <p>
                                     Management
                                     <i class="fa fa-angle-left right"></i>
@@ -99,26 +99,20 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <router-link to="/report" class="nav-link">
-                                        <i class="fas fa-chart-bar nav-icon"></i>
-                                        <p>Report</p>
-                                    </router-link>
-                                </li>
-                                <li class="nav-item">
                                     <router-link to="/products" class="nav-link">
-                                        <i class="fas fa-shopping-bag nav-icon"></i>
+                                        <i class="fas fa-shopping-bag nav-icon text-light"></i>
                                         <p>Products</p>
                                     </router-link>
                                 </li>
                                 <li class="nav-item">
                                     <router-link to="/staff" class="nav-link">
-                                        <i class="fas fa-user-cog nav-icon"></i>
+                                        <i class="fas fa-user-cog nav-icon text-light"></i>
                                         <p>Staff</p>
                                     </router-link>
                                 </li>
                                 <li class="nav-item">
                                     <router-link to="/suppliers" class="nav-link">
-                                        <i class="fas fa-users nav-icon"></i>
+                                        <i class="fas fa-users nav-icon text-light"></i>
                                         <p>Suppliers</p>
                                     </router-link>
                                 </li>
@@ -127,7 +121,7 @@
                         {{-- Management --}}
                         <li class="nav-item">
                             <router-link to="/profile" class="nav-link">
-                                <i class="fas fa-user nav-icon"></i>
+                                <i class="fas fa-user nav-icon text-light"></i>
                                 <p>Profile</p>
                             </router-link>
                         </li>
@@ -326,10 +320,17 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/examples/profile.html" class="nav-link">
-                                <i class="fa fa-power-off nav-icon"></i>
+                            <a class="nav-link" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                <i class="fa fa-power-off nav-icon"></i>         
                                 <p>Log out</p>
                             </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
                         </li>
                     </ul>
                 </nav>
@@ -338,33 +339,12 @@
 
         </aside>
 
-        <div class="content-wrapper">
-
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active text-capitalize">{{ Request::Path() }}</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
+        <div class="content-wrapper"> 
+            {{-- <section class="content"> --}}
+            <div class="container-fluid py-5">
+                <router-view></router-view>
             </div>
-
-
-            <section class="content">
-                <div class="container-fluid">
-
-
-                    <router-view></router-view>
-
-                </div>
-            </section>
+            {{-- </section> --}}
 
         </div>
 

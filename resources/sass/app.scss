@@ -26,6 +26,8 @@ $fa-font-path: "../webfonts";
   color: white;
 }
 
-aside{
-  overflow-y: hidden !important;
+
+.router-link-exact-active{
+  @extend.active;
+  @extend.text-light;
 }

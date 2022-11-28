@@ -10,18 +10,24 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import VueRouter from 'vue-router'
+import Dashboard from './components/Dashboard'
+import Products from './components/Products'
+import Profile from './components/Profile'
+import Suppliers from './components/Suppliers'
+import Staff from './components/Staff'
+
 Vue.use(VueRouter)
 
 const routes = [
-    { path: '/dashboard', component: require('./components/ExampleComponent.vue') },
-    { path: '/products', component: require('./components/Products.vue') },
-    { path: '/staff', component: require('./components/Staff.vue') },
-    { path: '/suppliers', component: require('./components/Suppliers.vue') },
-    { path: '/profile', component: require('./components/Profile.vue') },    
-    { path: '/report', component: require('./components/Report.vue') }    
+    { path: '/dashboard', component: Dashboard },
+    { path: '/products', component: Products },
+    { path: '/staff', component: Staff },
+    { path: '/suppliers', component: Suppliers },
+    { path: '/profile', component: Profile }
   ]
 
   const router = new VueRouter({
+    mode:'history',
     routes // short for `routes: routes`
   })
 /**
