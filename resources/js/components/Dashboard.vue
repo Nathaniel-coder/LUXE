@@ -30,7 +30,7 @@
 
                 <div class="small-box bg-orange text-light shadow">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>{{ userAmount }}</h3>
                         <p>User Registrations</p>
                     </div>
                     <div class="icon">
@@ -85,6 +85,16 @@
 
 <script>
     export default{
+        data(){
+            return{
+            userAmount: '',
+            }
+        },
+        methods:{
+            getUserCount(){
+                axios.get("api/dashboard").then(({ userAmount }) => (this.userAmount = userAmount));
+            }
+        },
         mounted(){
             console.log('Component Mounted');
         }
