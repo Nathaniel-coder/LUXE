@@ -17,7 +17,7 @@
 
                 <div class="small-box bg-danger shadow">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+                        <h3>{{ userAmount.length }}<sup style="font-size: 20px">%</sup></h3>
                         <p>Bounce Rate</p>
                     </div>
                     <div class="icon">
@@ -30,7 +30,7 @@
 
                 <div class="small-box bg-orange text-light shadow">
                     <div class="inner">
-                        <h3>{{ userAmount }}</h3>
+                        <h3>{{( userAmount.length + 1)}}</h3>
                         <p>User Registrations</p>
                     </div>
                     <div class="icon">
@@ -84,19 +84,19 @@
 </template>
 
 <script>
-    export default{
-        data(){
-            return{
-            userAmount: '',
-            }
-        },
-        methods:{
-            getUserCount(){
-                axios.get("api/dashboard").then(({ userAmount }) => (this.userAmount = userAmount));
-            }
-        },
-        mounted(){
-            console.log('Component Mounted');
+export default {
+    data() {
+        return {
+            userAmount: []
         }
+    },
+    methods: {
+        loadUsers() {
+            axios.get("api/dashboard").then(({ data }) => (this.userAmount = data));
+        }
+    },
+    mounted() {
+        console.log('Component Mounted');
     }
+}
 </script>
