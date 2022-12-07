@@ -4,7 +4,7 @@
             <div class="col-lg-4 col-6">
                 <div class="small-box bg-primary shadow">
                     <div class="inner">
-                        <h3>150</h3>
+                        <!-- <h3>{{ saleAmount.length }}</h3> -->
                         <p>New Orders</p>
                     </div>
                     <div class="icon">
@@ -17,7 +17,7 @@
 
                 <div class="small-box bg-danger shadow">
                     <div class="inner">
-                        <h3>{{ userAmount.length }}<sup style="font-size: 20px">%</sup></h3>
+                        <!-- <h3>{{ userAmount.length }}<sup style="font-size: 20px">%</sup></h3> -->
                         <p>Bounce Rate</p>
                     </div>
                     <div class="icon">
@@ -30,7 +30,7 @@
 
                 <div class="small-box bg-orange text-light shadow">
                     <div class="inner">
-                        <h3>{{( userAmount.length + 1)}}</h3>
+                        <h3>{{ userAmount }}</h3>
                         <p>User Registrations</p>
                     </div>
                     <div class="icon">
@@ -84,6 +84,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
@@ -92,11 +93,12 @@ export default {
     },
     methods: {
         loadUsers() {
-            axios.get("api/dashboard").then(({ data }) => (this.userAmount = data));
+            axios.get("/api/dashboard").then(response => this.userAmount = response.data);
         }
     },
     mounted() {
         console.log('Component Mounted');
+        console.log(userAmount);
     }
 }
 </script>

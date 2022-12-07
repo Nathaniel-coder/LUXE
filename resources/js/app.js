@@ -27,6 +27,7 @@ import VueRouter from 'vue-router'
 
 import Dashboard from './components/Dashboard'
 import Products from './components/Products'
+import Report from './components/Report'
 import Profile from './components/Profile'
 import Suppliers from './components/Suppliers'
 import Staff from './components/Staff'
@@ -58,6 +59,7 @@ const routes = [
     { path: '/dashboard', component: Dashboard },
     { path: '/products', component: Products },
     { path: '/staff', component: Staff },
+    { path: '/report', component: Report },
     { path: '/suppliers', component: Suppliers },
     { path: '/profile', component: Profile }
   ]

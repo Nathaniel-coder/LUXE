@@ -15,7 +15,9 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('merchant_id')->references('id')->on('users');
+            $table->unsignedInteger('users_id');
+            $table->foreign('users_id')->references('id')->on('users');
+            $table->unsignedInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
         });
@@ -29,5 +31,6 @@ class CreateSalesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('sales');
+        Schema::enableForeignKeyConstraints();
     }
 }

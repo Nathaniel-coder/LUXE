@@ -16,7 +16,7 @@ class SalesController extends Controller
      */
     public function index()
     {
-        //
+        $sales = sales::where('users_id', auth()->id())->count();
     }
 
     /**
