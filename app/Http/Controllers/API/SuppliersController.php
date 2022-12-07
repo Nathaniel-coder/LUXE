@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use App\User;
+use App\Suppliers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DashboardController extends Controller
+class SuppliersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $count = User::where('type', 'user')->count();
+        //
     }
 
     /**
@@ -43,10 +43,10 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Suppliers $suppliers)
     {
         //
     }
@@ -54,10 +54,10 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Suppliers $suppliers)
     {
         //
     }
@@ -66,10 +66,10 @@ class DashboardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Suppliers $suppliers)
     {
         //
     }
@@ -77,10 +77,10 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Suppliers $suppliers)
     {
         //
     }
