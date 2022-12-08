@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::latest()->Paginate(15);
+        return User::where('type', 'admin')->latest()->Paginate(5);
 
 
 

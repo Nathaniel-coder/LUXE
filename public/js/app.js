@@ -1720,7 +1720,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      userAmount: []
+      userAmount: [],
+      saleBounce: [],
+      total: []
     };
   },
   methods: {
@@ -1729,7 +1731,14 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('api/dashboard').then(function (response) {
         return _this.userAmount = response.data;
       });
-    }
+      axios.get('api/sales').then(function (response) {
+        return _this.saleBounce = response.data;
+      });
+      axios.get('api/total').then(function (response) {
+        return _this.total = response.data;
+      });
+    },
+    loadSales: function loadSales() {}
   },
   mounted: function mounted() {
     this.loadUsers();
@@ -1826,6 +1835,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$Progress.start();
       this.form.put('api/user/' + this.form.id).then(function () {
         Swal.fire('Updated!', 'Successfully Updated.', 'success');
+        $('#addNew').modal('hide');
       })["catch"](function () {
         _this3.$Progress.fail();
         Swal.fire('Failed', 'Oops, Something went wrong!', 'warning');
@@ -1885,7 +1895,17 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", [_c("div", {
     staticClass: "row"
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-4 col-6"
+  }, [_c("div", {
+    staticClass: "small-box bg-danger shadow"
+  }, [_c("div", {
+    staticClass: "inner"
+  }, [_c("h3", [_vm._v(_vm._s(_vm.saleBounce)), _c("sup", {
+    staticStyle: {
+      "font-size": "20px"
+    }
+  }, [_vm._v("%")])]), _vm._v(" "), _c("p", [_vm._v("Bounce Rate")])]), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c("div", {
     staticClass: "col-lg-4 col-6"
   }, [_c("div", {
     staticClass: "small-box bg-orange text-light shadow"
@@ -1911,16 +1931,10 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "col-lg-4 col-6"
-  }, [_c("div", {
-    staticClass: "small-box bg-danger shadow"
-  }, [_c("div", {
-    staticClass: "inner"
-  }, [_c("p", [_vm._v("Bounce Rate")])]), _vm._v(" "), _c("div", {
     staticClass: "icon"
   }, [_c("i", {
     staticClass: "ion ion-stats-bars"
-  })])])]);
+  })]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -2125,26 +2139,11 @@ var render = function render() {
     staticClass: "container"
   }, [_c("div", {
     staticClass: "card"
-  }, [_c("div", {
-    staticClass: "card-header"
-  }, [_c("h3", {
-    staticClass: "card-title"
-  }, [_vm._v("Staff")]), _vm._v(" "), _c("div", {
-    staticClass: "card-tools"
-  }, [_c("button", {
-    staticClass: "btn btn-primary",
-    on: {
-      click: function click($event) {
-        return _vm.newModal();
-      }
-    }
-  }, [_c("i", {
-    staticClass: "fa fa-plus"
-  })])])]), _vm._v(" "), _c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "card-body table-responsive p-0"
   }, [_c("table", {
     staticClass: "table table-hover text-nowrap"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.users, function (user) {
+  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.users, function (user) {
     return _c("tr", {
       key: user.id
     }, [_c("td", [_vm._v(_vm._s(user.name) + " ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm._f("upText")(user.type)))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm._f("dateFormat")(new Date(user.created_at), "MMMM DD YYYY")))]), _vm._v(" "), _c("td", [_c("button", {
@@ -2213,7 +2212,7 @@ var render = function render() {
     attrs: {
       id: "exampleModalLongTitle"
     }
-  }, [_vm._v("Edit Staff")]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Edit Staff")]), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c("div", {
     staticClass: "modal-body"
   }, [_c("div", {
     staticClass: "form-group"
@@ -2410,6 +2409,16 @@ var render = function render() {
   }, [_vm._v("Save changes")])])])])])])]);
 };
 var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "card-header"
+  }, [_c("h3", {
+    staticClass: "card-title"
+  }, [_vm._v("Staff")]), _vm._v(" "), _c("div", {
+    staticClass: "card-tools"
+  })]);
+}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("thead", [_c("tr", [_c("th", [_vm._v("Name")]), _vm._v(" "), _c("th", [_vm._v("Email")]), _vm._v(" "), _c("th", [_vm._v("Type")]), _vm._v(" "), _c("th", [_vm._v("Registered At")]), _vm._v(" "), _c("th", [_vm._v("Action")])])]);

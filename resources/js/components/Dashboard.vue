@@ -17,7 +17,7 @@
 
                 <div class="small-box bg-danger shadow">
                     <div class="inner">
-                        <!-- <h3>{{ userAmount.length }}<sup style="font-size: 20px">%</sup></h3> -->
+                        <h3>{{ saleBounce }}<sup style="font-size: 20px">%</sup></h3>
                         <p>Bounce Rate</p>
                     </div>
                     <div class="icon">
@@ -88,12 +88,19 @@ import { AxiosInstance } from "axios";
 export default {
     data() {
         return {
-            userAmount: []
+            userAmount: [],
+            saleBounce: [],
+            total: []
         }
     },
     methods: {
         loadUsers() {
             axios.get('api/dashboard').then(response => this.userAmount = response.data);
+            axios.get('api/sales').then(response => this.saleBounce = response.data);
+            axios.get('api/total').then(response => this.total = response.data);
+        },
+        loadSales(){
+
         }
     },
     mounted() {

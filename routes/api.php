@@ -20,4 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::Resources(['user'=>'API\UserController']);
 
 Route::get('dashboard', 'API\DashboardController@index');
+Route::get('sales', 'API\SalesController@index');
+Route::get('total', 'API\TotalSalesController@index');
 

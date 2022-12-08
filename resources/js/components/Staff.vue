@@ -4,9 +4,9 @@
             <div class="card-header">
                 <h3 class="card-title">Staff</h3>
                 <div class="card-tools">
-                    <button class="btn btn-primary" @click="newModal()">
+                    <!-- <button class="btn btn-primary" @click="newModal()">
                         <i class="fa fa-plus"></i>
-                    </button>
+                    </button> -->
                 </div>
             </div>
 
@@ -188,6 +188,7 @@ export default {
                         'Successfully Updated.',
                         'success'
                     )
+                    $('#addNew').modal('hide')
                 }).catch(() => {
                     this.$Progress.fail();
                     Swal.fire(

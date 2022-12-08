@@ -17,9 +17,7 @@ class SalesController extends Controller
     public function index()
     {
         $sales = sales::where('created_at', '>=', Carbon::today())->count();
-        $previous = sales::all()->count();
-        $total = ($sales/$previous)*100;
-        return response()->json($total);
+        return response()->json($sales);
     }
 
     /**
