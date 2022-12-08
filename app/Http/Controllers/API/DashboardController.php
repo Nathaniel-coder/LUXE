@@ -16,7 +16,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return User::all();
+        $users = User::where('type', 'user')->count();
+        return response()->json($users);
     }
 
     /**

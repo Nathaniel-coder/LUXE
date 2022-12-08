@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { AxiosInstance } from "axios";
 export default {
     data() {
         return {
@@ -93,12 +93,11 @@ export default {
     },
     methods: {
         loadUsers() {
-            axios.get("/api/dashboard").then(response => this.userAmount = response.data);
+            axios.get('api/dashboard').then(response => this.userAmount = response.data);
         }
     },
     mounted() {
-        console.log('Component Mounted');
-        console.log(userAmount);
+        this.loadUsers();
     }
 }
 </script>

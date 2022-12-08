@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\API\DashboardController;
 use Illuminate\Http\Request;
 
 /*php
@@ -20,6 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::Resources(['user'=>'API\UserController']);
 
-Route::resource('dashboard', 'DashboardController');
-
+Route::get('dashboard', 'API\DashboardController@index');
 

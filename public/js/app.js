@@ -1726,14 +1726,13 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     loadUsers: function loadUsers() {
       var _this = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("./api/dashboard").then(function (response) {
+      axios.get('api/dashboard').then(function (response) {
         return _this.userAmount = response.data;
       });
     }
   },
   mounted: function mounted() {
-    console.log('Component Mounted');
-    console.log(userAmount);
+    this.loadUsers();
   }
 });
 
