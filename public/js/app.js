@@ -1732,10 +1732,10 @@ __webpack_require__.r(__webpack_exports__);
         return _this.userAmount = response.data;
       });
       axios.get('api/sales').then(function (response) {
-        return _this.saleBounce = response.data;
+        return _this.saleBounce = response.data[0];
       });
-      axios.get('api/total').then(function (response) {
-        return _this.total = response.data;
+      axios.get('api/sales').then(function (response) {
+        return _this.total = response.data[1];
       });
     },
     loadSales: function loadSales() {}
@@ -1895,7 +1895,13 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", [_c("div", {
     staticClass: "row"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "col-lg-4 col-6"
+  }, [_c("div", {
+    staticClass: "small-box bg-primary shadow"
+  }, [_c("div", {
+    staticClass: "inner"
+  }, [_c("h3", [_vm._v(_vm._s(_vm.total))]), _vm._v(" "), _c("p", [_vm._v("New Orders")])]), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c("div", {
     staticClass: "col-lg-4 col-6"
   }, [_c("div", {
     staticClass: "small-box bg-danger shadow"
@@ -1917,16 +1923,10 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "col-lg-4 col-6"
-  }, [_c("div", {
-    staticClass: "small-box bg-primary shadow"
-  }, [_c("div", {
-    staticClass: "inner"
-  }, [_c("p", [_vm._v("New Orders")])]), _vm._v(" "), _c("div", {
     staticClass: "icon"
   }, [_c("i", {
     staticClass: "ion ion-bag"
-  })])])]);
+  })]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -2146,7 +2146,7 @@ var render = function render() {
   }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.users, function (user) {
     return _c("tr", {
       key: user.id
-    }, [_c("td", [_vm._v(_vm._s(user.name) + " ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm._f("upText")(user.type)))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm._f("dateFormat")(new Date(user.created_at), "MMMM DD YYYY")))]), _vm._v(" "), _c("td", [_c("button", {
+    }, [_c("td", [_vm._v(_vm._s(user.name) + " ")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm._f("upText")(user.type)))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm._f("dateFormat")(new Date(user.created_at), "DD/MM/YYYY")))]), _vm._v(" "), _c("td", [_c("button", {
       staticClass: "btn btn-orange text-light",
       on: {
         click: function click($event) {

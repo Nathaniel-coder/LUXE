@@ -28,7 +28,7 @@
                             <td>{{ user.name }} </td>
                             <td>{{ user.email }}</td>
                             <td>{{ user.type | upText }}</td>
-                            <td>{{ new Date(user.created_at) | dateFormat('MMMM DD YYYY') }}</td>
+                            <td>{{ new Date(user.created_at) | dateFormat('DD/MM/YYYY') }}</td>
                             <td>
                                 <button class="btn btn-orange text-light" @click="editModal(user)">
                                     <i class="fa fa-edit"></i>

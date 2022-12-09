@@ -4,7 +4,7 @@
             <div class="col-lg-4 col-6">
                 <div class="small-box bg-primary shadow">
                     <div class="inner">
-                        <!-- <h3>{{ saleAmount.length }}</h3> -->
+                        <h3>{{ total }}</h3>
                         <p>New Orders</p>
                     </div>
                     <div class="icon">
@@ -96,8 +96,8 @@ export default {
     methods: {
         loadUsers() {
             axios.get('api/dashboard').then(response => this.userAmount = response.data);
-            axios.get('api/sales').then(response => this.saleBounce = response.data);
-            axios.get('api/total').then(response => this.total = response.data);
+            axios.get('api/sales').then(response => this.saleBounce = response.data[0]);
+            axios.get('api/sales').then(response => this.total = response.data[1]);
         },
         loadSales(){
 

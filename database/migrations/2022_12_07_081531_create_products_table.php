@@ -18,7 +18,6 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->integer('amount');
             $table->double('unitCost');
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->unsigned();
             $table->timestamps();
         });
     }
